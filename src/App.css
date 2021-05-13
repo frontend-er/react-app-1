@@ -11,32 +11,3 @@
 }
 
 
-.header {
-  grid-area: h;
-  background-color: rgb(255, 250, 245);
-}
-
-.header img {
-  width: 130px;
-  height: 50px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: aqua;
-}
-
-
-.content {
-  grid-area: c;
-  background-color: burlywood;
-}
-
-.preview img
- {
-  width: 100%;
-}
-
-.profile-photo img {
-  width: 200px;
-}

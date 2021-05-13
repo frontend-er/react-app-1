@@ -1,0 +1,9 @@
+.navigationBar {
+   grid-area: n;
+   background-color: aqua;
+ }
+
+ .item a {
+    color:white;
+    
+ }
