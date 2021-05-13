@@ -5,16 +5,19 @@ function Navigation() {
    return (
    <nav className = {style.navigationBar}>
       <div className = {style.item}>
-        <a href="">Profile</a> 
+        <a href="/profile">Profile</a> 
       </div>
       <div>
-        <a href="">Messages</a> 
+        <a href="/dialogs">Messages</a> 
       </div>
       <div>
         <a href="">News</a> 
       </div>
       <div>
         <a href="">Feed</a> 
+      </div>
+      <div>
+        <a href="">Settings</a> 
       </div>
     </nav>
 
