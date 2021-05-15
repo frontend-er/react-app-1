@@ -1,4 +1,23 @@
 .dialogs {
    background-color: rgb(0, 0, 0);
    color: azure;
+   display: grid; 
+   grid-template-columns: 1fr 11fr;
 }
+
+.dialogItems .dialog {
+   padding: 10px;
+}
+
+
+
+
+
+.messages {
+   padding: 12px;
+}
+
+.message {
+
+}
+

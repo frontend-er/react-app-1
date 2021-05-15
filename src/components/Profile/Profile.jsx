@@ -9,7 +9,7 @@ function Profile() {
       Main Content
 
       <div className={style.preview}>
-      <img src="https://lh3.googleusercontent.com/proxy/ZGOfpJRkxsY8F_3oBlzzN7MRg2AY5GDKswyrNUq7uwLNRMHiCfNje9UO2qKDfwhg8gt8fgUCEliFLnmjJEMtaXTwVEjxSoP9wI6rkcyhMw" alt="" />
+      <img src="https://storge.pic2.me/c/1360x800/299/565eb2e9d5fe1.jpg" alt="" />
       </div>
 
       <div className={style.profilePhoto}>
