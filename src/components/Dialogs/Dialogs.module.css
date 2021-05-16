@@ -3,6 +3,7 @@
    color: azure;
    display: grid; 
    grid-template-columns: 1fr 11fr;
+   padding: 3px;
 }
 
 .dialogItems .dialog {
@@ -10,14 +11,19 @@
 }
 
 
+.dialogs a {
+   color: azure;
+   margin: 6px;
+}
 
 
 
-.messages {
+.messages  {
    padding: 12px;
 }
 
-.message {
-
+.dialog img {
+   width: 20px;
+   border-radius: 50%;
 }
 

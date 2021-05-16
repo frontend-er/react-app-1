@@ -3,7 +3,7 @@ import style from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 
 
-function Profile() {
+function Profile(props) {
    return (
   <div  className = {style.content}> 
       Main Content
@@ -15,7 +15,7 @@ function Profile() {
       <div className={style.profilePhoto}>
       <img src="https://cdn.dribbble.com/users/10882/screenshots/15172621/media/cd2246d5d0f54f9a4316bd4d276764b2.png?compress=1&resize=400x300" alt="" />
       </div>
-      <MyPosts />
+      <MyPosts posts={props.posts} />
       
     </div>
 

@@ -1,0 +1,13 @@
+.name {
+   color: azure;
+   font-size: medium;
+}
+
+.friends img {
+   width: 50px;
+   border-radius: 50%;
+}
+
+.friendHolder {
+   padding: 6px;
+}
