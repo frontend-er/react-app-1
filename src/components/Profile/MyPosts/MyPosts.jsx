@@ -4,17 +4,23 @@ import style from "./MyPosts.module.css";
 
 
 
-
+   let newPostElement = React.createRef();
 
 
  function  MyPosts(props) {
-    let postItem = props.posts.map( p =>  <Post name={p.name} likes={p.likesOnPost}/> )
+    let postItem = props.posts.map( p =>  <Post name={p.name} likes={p.likesOnPost}/> );
+
+    let addPost = () => {
+      let text = newPostElement.current.value;
+      props.addPost(text);
+    
+    }
+      
     return( 
      <div className={style.container}>
-     <textarea>
-     </textarea>
+     <textarea value="new post" ref={newPostElement} ></textarea>
 
-     <button>
+     <button onClick={addPost}>
      Add Post</button>
       {postItem}
  </div>
