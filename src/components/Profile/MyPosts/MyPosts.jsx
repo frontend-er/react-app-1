@@ -13,12 +13,13 @@ import style from "./MyPosts.module.css";
     let addPost = () => {
       let text = newPostElement.current.value;
       props.addPost(text);
+      newPostElement.current.value = '';
     
     }
       
     return( 
      <div className={style.container}>
-     <textarea value="new post" ref={newPostElement} ></textarea>
+     <textarea  ref={newPostElement} ></textarea>
 
      <button onClick={addPost}>
      Add Post</button>
