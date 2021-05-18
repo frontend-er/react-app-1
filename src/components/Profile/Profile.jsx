@@ -15,7 +15,7 @@ function Profile(props) {
       <div className={style.profilePhoto}>
       <img src="https://cdn.dribbble.com/users/10882/screenshots/15172621/media/cd2246d5d0f54f9a4316bd4d276764b2.png?compress=1&resize=400x300" alt="" />
       </div>
-      <MyPosts posts={props.posts} addPost={props.addPost} />
+      <MyPosts posts={props.posts} addPost={props.addPost} updatePost={props.updatePost} newPost={props.newPost} />
       
     </div>
 

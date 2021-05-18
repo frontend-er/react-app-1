@@ -11,15 +11,18 @@ import style from "./MyPosts.module.css";
     let postItem = props.posts.map( p =>  <Post name={p.name} likes={p.likesOnPost}/> );
 
     let addPost = () => {
+      props.addPost();
+
+    }
+
+    let changePostValue = () => {
       let text = newPostElement.current.value;
-      props.addPost(text);
-      newPostElement.current.value = '';
-    
+      props.updatePost(text);
     }
       
     return( 
      <div className={style.container}>
-     <textarea  ref={newPostElement} ></textarea>
+     <textarea  ref={newPostElement} value={props.newPost} onChange={changePostValue}   ></textarea>
 
      <button onClick={addPost}>
      Add Post</button>

@@ -2,7 +2,6 @@
     renderComponents
  } from "./../render";
 
-
  let state = {
 
     profilePage: {
@@ -18,6 +17,8 @@
           },
 
        ],
+
+       newPostValue: 'facebook'
     },
 
     messagesPage: {
@@ -62,7 +63,9 @@
              name: "Sveta"
           },
 
-       ]
+       ],
+
+       defaultMessage: 'Write your message:'
     },
 
 
@@ -91,16 +94,41 @@
 
 
  }
+ window.state = state;
+ 
+  export let addMessage = () => {
+    let message = {
+       id: '5',
+       name: state.messagesPage.defaultMessage,
+    }
+
+   state.messagesPage.messages.push(message);
+   state.messagesPage.defaultMessage = '';
+   renderComponents(state);
+ }
+
+  export let updateMessage = (newValue) => {
+    state.messagesPage.defaultMessage = newValue;
+    renderComponents(state);
+ }
 
 
- export let addPost = (newPost) => {
+
+ export let addPost = () => {
     let post = {
        id: '5',
-       name: newPost,
+       name: state.profilePage.newPostValue,
        likesOnPost: 11
     }
 
-    state.profilePage.posts.push(post);
+   state.profilePage.posts.push(post);
+   state.profilePage.newPostValue ='';
+
+   renderComponents(state);
+ }
+
+  export let updatePost = (newValue) => {
+    state.profilePage.newPostValue = newValue;
     renderComponents(state);
  }
 

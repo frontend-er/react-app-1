@@ -16,19 +16,23 @@ function Dialogs(props) {
    let newMessageElement = React.createRef();
 
    let addMessage = () => {
+      props.addMessage();
+   }
+
+   let updateMessage = () => {
       let text = newMessageElement.current.value;
-      alert(text);
+      props.updateMessage(text);
    }
 
    return (
-      <div className={style.dialogs}>
+      <div className={style.dialogs}> 
          <div className={style.dialogsItems}>
             {dialogItems}
          </div>
 
          <div className={style.messages}>
             {messageItems}
-             <textarea ref={newMessageElement}></textarea> 
+             <textarea ref={newMessageElement} value={props.defaultMessage} onChange={updateMessage} ></textarea> 
              <button onClick={addMessage}>Send</button>
          </div>
 
