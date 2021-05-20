@@ -9,19 +9,21 @@ import Message from "./Message/Message";
 
 
 function Dialogs(props) {
-   
+   debugger;
    let dialogItems = props.dialogs.map( d => <Dialog id={d.id}  name={d.name} img={d.img}/>);
    let messageItems = props.messages.map( m => <Message name={m.name} />);
 
    let newMessageElement = React.createRef();
 
    let addMessage = () => {
-      props.addMessage();
+      //props.addMessage();
+         props.dispatch({type: 'ADD-MESSAGE'})
    }
 
    let updateMessage = () => {
       let text = newMessageElement.current.value;
-      props.updateMessage(text);
+      //props.updateMessage(text);
+      props.dispatch({type: 'UPDATE-MESSAGE', newValue: text  })
    }
 
    return (

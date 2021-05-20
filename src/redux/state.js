@@ -90,58 +90,48 @@ let store = {
 
 
    },
+   _renderComponents() {
+      console.log("render");
+   },
 
    getState() {
       return this._state;
    },
 
-   renderComponents() {
-      console.log("render");
-   },
-
-   addMessage() {
-      let message = {
-         id: '5',
-         name: this._state.messagesPage.defaultMessage,
-      }
-
-      this._state.messagesPage.messages.push(message);
-      this._state.messagesPage.defaultMessage = '';
-      this.renderComponents(this._state);
-   },
-   updateMessage(newValue) {
-      this._state.messagesPage.defaultMessage = newValue;
-      this.renderComponents(this._state);
-   },
-
-
-
    update(observer) {
-      this.renderComponents = observer;
+      this._renderComponents = observer;
    },
 
-   addPost() {
-      let post = {
-         id: '5',
-         name: this._state.profilePage.newPostValue,
-         likesOnPost: 11
+   dispatch(action) {
+      if (action.type === 'ADD-POST') {
+         let post = {
+            id: '5',
+            name: this._state.profilePage.newPostValue,
+            likesOnPost: 11
+         }
+
+         this._state.profilePage.posts.push(post);
+         this._state.profilePage.newPostValue = '';
+
+         this._renderComponents(this._state);
+      } else if (action.type === 'ADD-MESSAGE') {
+         let message = {
+            id: '5',
+            name: this._state.messagesPage.defaultMessage,
+         }
+
+         this._state.messagesPage.messages.push(message);
+         this._state.messagesPage.defaultMessage = '';
+         this._renderComponents(this._state);
+      } else if (action.type === 'UPDATE-POST') {
+         this._state.profilePage.newPostValue = action.newValue;
+         this._renderComponents(this._state);
+      } else if (action.type === 'UPDATE-MESSAGE') {
+         this._state.messagesPage.defaultMessage = action.newValue;
+         this._renderComponents(this._state);
       }
-
-      this._state.profilePage.posts.push(post);
-      this._state.profilePage.newPostValue = '';
-
-      this.renderComponents(this._state);
-   },
-
-   updatePost(newValue) {
-      this._state.profilePage.newPostValue = newValue;
-      this.renderComponents(this._state);
    }
 }
-
-
-
-
 
 
 
