@@ -1,7 +1,7 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST = 'UPDATE-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
+import profilePageReducer from "./profile-reducer";
+import dialogsPageReducer from "./dialogs-reducer";
+import sideBarReducer from "./sidebar-reducer";
+
 
 let store = {
    _state: {
@@ -69,6 +69,8 @@ let store = {
          defaultMessage: 'Write your message:'
       },
 
+      sideBarPage: {},
+
 
       sideBar: {
          friends: [{
@@ -108,62 +110,17 @@ let store = {
    },
 
    dispatch(action) {
-      if (action.type === ADD_POST) {
-         let post = {
-            id: '5',
-            name: this._state.profilePage.newPostValue,
-            likesOnPost: 11
-         }
 
-         this._state.profilePage.posts.push(post);
-         this._state.profilePage.newPostValue = '';
+      this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+      this._state.messagesPage = dialogsPageReducer(this._state.messagesPage, action);
 
-         this._renderComponents(this._state);
-      } else if (action.type === ADD_MESSAGE) {
-         let message = {
-            id: '5',
-            name: this._state.messagesPage.defaultMessage,
-         }
 
-         this._state.messagesPage.messages.push(message);
-         this._state.messagesPage.defaultMessage = '';
-         this._renderComponents(this._state);
-      } else if (action.type === UPDATE_POST) {
-         this._state.profilePage.newPostValue = action.newValue;
-         this._renderComponents(this._state);
-      } else if (action.type === UPDATE_MESSAGE) {
-         this._state.messagesPage.defaultMessage = action.newValue;
-         this._renderComponents(this._state);
-      }
+      this._renderComponents(this._state);
    }
 }
 
 
-export const addPostActionCreator = () => {
-   return {
-      type: ADD_POST
-   }
-}
 
-export const updatePostActionCreator = (text) => {
-   return {
-      type: UPDATE_POST,
-      newValue: text
-   }
-}
-
-export const addMessageActionCreator = () => {
-   return {
-      type: ADD_MESSAGE
-   }
-}
-
-export const updateMessageActionCreator = (text) => {
-   return {
-      type: UPDATE_MESSAGE,
-      newValue: text
-   }
-}
 
 
 window.store = store;
