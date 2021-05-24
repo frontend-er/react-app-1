@@ -1,8 +1,24 @@
 const ADD_POST = 'ADD-POST';
-
 const UPDATE_POST = 'UPDATE-POST';
 
-const profilePageReducer = (state, action) => {
+let initialState = {
+   posts: [{
+         id: 1,
+         name: "newPost",
+         likesOnPost: 12
+      },
+      {
+         id: 2,
+         name: "newPost 2 ",
+         likesOnPost: 11
+      },
+
+   ],
+
+   newPostValue: 'facebook'
+};
+
+const profilePageReducer = (state = initialState, action) => {
 
    switch (action.type) {
       case ADD_POST:
