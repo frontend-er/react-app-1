@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST = 'UPDATE-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
+
 let store = {
    _state: {
       profilePage: {
@@ -103,7 +108,7 @@ let store = {
    },
 
    dispatch(action) {
-      if (action.type === 'ADD-POST') {
+      if (action.type === ADD_POST) {
          let post = {
             id: '5',
             name: this._state.profilePage.newPostValue,
@@ -114,7 +119,7 @@ let store = {
          this._state.profilePage.newPostValue = '';
 
          this._renderComponents(this._state);
-      } else if (action.type === 'ADD-MESSAGE') {
+      } else if (action.type === ADD_MESSAGE) {
          let message = {
             id: '5',
             name: this._state.messagesPage.defaultMessage,
@@ -123,10 +128,10 @@ let store = {
          this._state.messagesPage.messages.push(message);
          this._state.messagesPage.defaultMessage = '';
          this._renderComponents(this._state);
-      } else if (action.type === 'UPDATE-POST') {
+      } else if (action.type === UPDATE_POST) {
          this._state.profilePage.newPostValue = action.newValue;
          this._renderComponents(this._state);
-      } else if (action.type === 'UPDATE-MESSAGE') {
+      } else if (action.type === UPDATE_MESSAGE) {
          this._state.messagesPage.defaultMessage = action.newValue;
          this._renderComponents(this._state);
       }
@@ -134,8 +139,31 @@ let store = {
 }
 
 
+export const addPostActionCreator = () => {
+   return {
+      type: ADD_POST
+   }
+}
 
+export const updatePostActionCreator = (text) => {
+   return {
+      type: UPDATE_POST,
+      newValue: text
+   }
+}
 
+export const addMessageActionCreator = () => {
+   return {
+      type: ADD_MESSAGE
+   }
+}
+
+export const updateMessageActionCreator = (text) => {
+   return {
+      type: UPDATE_MESSAGE,
+      newValue: text
+   }
+}
 
 
 window.store = store;
