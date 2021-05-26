@@ -1,9 +1,6 @@
 import React  from "react";
-import style from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
-import Dialog from "./Dialog/Dialog";
-import Message from "./Message/Message";
 import { addMessageActionCreator, updateMessageActionCreator } from "./../../redux/dialogs-reducer";
+import Dialogs from "./Dialogs";
 
 
 
@@ -11,24 +8,18 @@ import { addMessageActionCreator, updateMessageActionCreator } from "./../../red
 
 function DialogsContainer(props) {
  
-   let dialogItems = props.dialogs.map( d => <Dialog id={d.id}  name={d.name} img={d.img}/>);
-   let messageItems = props.messages.map( m => <Message name={m.name} />);
-
-   let newMessageElement = React.createRef();
-
+ 
+   let state = props.store.getState();
    let addMessage = () => {
-      //props.addMessage();
-         props.dispatch(addMessageActionCreator())
+      props.store.dispatch(addMessageActionCreator())
    }
 
-   let updateMessage = () => {
-      let text = newMessageElement.current.value;
-      //props.updateMessage(text);
-      props.dispatch(updateMessageActionCreator(text))
+   let updateMessage = (text) => {
+      props.store.dispatch(updateMessageActionCreator(text))
    }
 
    return (
-    <Dialog  />
+    <Dialogs  dialogs={state.dialogsPage.dialogs} messages={state.dialogsPage.messages} addMessage={addMessage} updateMessage={updateMessage} defaultMessage={state.dialogsPage.defaultMessage}/>
    )
 };
 

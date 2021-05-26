@@ -10,6 +10,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 
 import './App.css';
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 function App(props) {
@@ -19,7 +20,7 @@ function App(props) {
   <Header />
   <Navigation friends={props.state.sideBar.friends}/>
   <div className="app-wrapper-content">
-    <Route path="/dialogs" render={() => <Dialogs dialogs={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages} defaultMessage={props.state.dialogsPage.defaultMessage} dispatch={props.dispatch}/>} />
+    <Route path="/dialogs" render={() => <DialogsContainer store={props.store}/>} />
     <Route path="/profile" render={() => <Profile store={props.store}/>} />
     <Route path="/news" component={News} />
     <Route path="/settings" component={Settings} />
