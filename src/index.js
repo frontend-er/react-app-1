@@ -1,4 +1,5 @@
 import App from './App';
+import StateContext from './StateContext';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 import React from 'react';
@@ -8,7 +9,9 @@ import './index.css';
 let renderComponents = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
+      <StateContext.Provider value={store}>
+        <App state={state} />
+      </StateContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

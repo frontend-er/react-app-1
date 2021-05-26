@@ -31,7 +31,7 @@ function Dialogs(props) {
 
          <div className={style.messages}>
             {messageItems}
-             <textarea  ref={newMessageElement} value={props.defaultMessage} onChange={updateMessage} ></textarea> 
+             <textarea placeholder="Type your message"  ref={newMessageElement} value={props.defaultMessage} onChange={updateMessage} ></textarea> 
              <button onClick={addMessage}>Send</button>
          </div>
 
