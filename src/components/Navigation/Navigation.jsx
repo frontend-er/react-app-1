@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Navigation.module.css';
 import { NavLink } from "react-router-dom";
-import Friends from "./Friends/Friends";
+import FriendsContainer from "./Friends/FriendsContainer";
 
 function Navigation(props) {
    return (
@@ -22,7 +22,7 @@ function Navigation(props) {
        <NavLink to="/login" activeClassName={style.active}>Login</NavLink> 
       </div>
 
-      <Friends friends={props.friends} />
+      <FriendsContainer/>
   </nav>
 
    )
