@@ -1,7 +1,6 @@
 import  React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css";
-import { addPostActionCreator,updatePostActionCreator } from "./../../../redux/profile-reducer";
 
 
 
@@ -13,14 +12,13 @@ let newPostElement = React.createRef();
     let postItem = props.posts.map( p =>  <Post name={p.name} likes={p.likesOnPost}/> );
 
     let addPost = () => {
-     // props.addPost();
-        props.dispatch(addPostActionCreator());
+        props.addPost();
     }
 
     let changePostValue = () => {
       let text = newPostElement.current.value;
-      //props.updatePost(text);
-      props.dispatch(updatePostActionCreator(text));
+      props.updatePost(text);
+     
     }
       
     return( 

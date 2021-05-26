@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 function Profile(props) {
@@ -15,7 +15,7 @@ function Profile(props) {
       <div className={style.profilePhoto}>
       <img src="https://cdn.dribbble.com/users/10882/screenshots/15172621/media/cd2246d5d0f54f9a4316bd4d276764b2.png?compress=1&resize=400x300" alt="" />
       </div>
-      <MyPosts posts={props.posts} newPost={props.newPost} newPostValue={props.newPostValue} dispatch={props.dispatch}  />
+      <MyPostsContainer store={props.store}   />
       
     </div>
 

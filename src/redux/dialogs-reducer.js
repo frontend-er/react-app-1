@@ -45,7 +45,7 @@ let initialState = {
 
    ],
 
-   defaultMessage: 'Write your message:'
+   defaultMessage: ''
 }
 
 const dialogsPageReducer = (state = initialState, action) => {

@@ -9,7 +9,7 @@ import { addMessageActionCreator, updateMessageActionCreator } from "./../../red
 
 
 
-function Dialogs(props) {
+function DialogsContainer(props) {
  
    let dialogItems = props.dialogs.map( d => <Dialog id={d.id}  name={d.name} img={d.img}/>);
    let messageItems = props.messages.map( m => <Message name={m.name} />);
@@ -28,20 +28,8 @@ function Dialogs(props) {
    }
 
    return (
-      <div className={style.dialogs}> 
-         <div className={style.dialogsItems}>
-            {dialogItems}
-         </div>
-
-         <div className={style.messages}>
-            {messageItems}
-             <textarea placeholder="enter your message" ref={newMessageElement} value={props.defaultMessage} onChange={updateMessage} ></textarea> 
-             <button onClick={addMessage}>Send</button>
-         </div>
-
-        
-      </div>
+    <Dialog  />
    )
 };
 
-export default Dialogs;
+export default DialogsContainer;

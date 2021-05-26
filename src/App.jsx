@@ -20,7 +20,7 @@ function App(props) {
   <Navigation friends={props.state.sideBar.friends}/>
   <div className="app-wrapper-content">
     <Route path="/dialogs" render={() => <Dialogs dialogs={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages} defaultMessage={props.state.dialogsPage.defaultMessage} dispatch={props.dispatch}/>} />
-    <Route path="/profile" render={() => <Profile posts={props.state.profilePage.posts} newPostValue={props.state.profilePage.newPostValue} dispatch={props.dispatch}/>} />
+    <Route path="/profile" render={() => <Profile store={props.store}/>} />
     <Route path="/news" component={News} />
     <Route path="/settings" component={Settings} />
 
