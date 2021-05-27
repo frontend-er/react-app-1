@@ -6,8 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-let renderComponents = (state) => {
-  ReactDOM.render(
+ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
         <App  />
@@ -16,13 +15,8 @@ let renderComponents = (state) => {
     document.getElementById('root')
   );
 
-}
 
 
-renderComponents(store.getState());
-store.subscribe(() => {
-  renderComponents(store.getState());
-});
 
 
 // If you want to start measuring performance in your app, pass a function

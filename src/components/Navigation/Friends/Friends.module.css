@@ -1,12 +1,15 @@
 .header {
-   color: azure;
+   color:rgb(14, 14, 14);
    font-size: larger;
    padding: 10px;
    margin-top: 20px;
+   background-color: rgb(183, 213, 233);
 }
 
 .friends {
    display: flex;
    padding: 10px;
+   background-color: rgb(183, 213, 233);
+
 }
 

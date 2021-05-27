@@ -1,14 +1,5 @@
 
 .content {
    grid-area: c;
-   background-color: burlywood;
- }
- 
- .preview img
-  {
-   width: 100%;
- }
- 
- .profilePhoto img {
-   width: 200px;
+   background-color: rgb(223, 222, 222);
  }
