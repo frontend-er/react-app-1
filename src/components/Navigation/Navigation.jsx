@@ -19,7 +19,7 @@ function Navigation(props) {
         <NavLink to="/settings" activeClassName={style.active}>Settings</NavLink> 
       </div>
       <div className = {style.item}>
-       <NavLink to="/login" activeClassName={style.active}>Login</NavLink> 
+       <NavLink to="/users" activeClassName={style.active}>Users</NavLink> 
       </div>
 
       <FriendsContainer/>
