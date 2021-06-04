@@ -6,8 +6,9 @@ import userPhoto from "../../assets/img/profilePhoto.png";
 class Users extends React.Component {
    componentDidMount () {
          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count${this.props.pageSize}`).then(response => {
-               debugger;
                this.props.setUsers(response.data.items);
+               this.props.setUsersTotalCount(response.data.totalCount);
+
          })
    }
 
@@ -25,9 +26,12 @@ class Users extends React.Component {
    render () {
 
       let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+      
+
+      console.info(this.props.totalUsersCount);
       let pages = [];
 
-      for (let i = 1; i <= pagesCount; i++ ) {
+      for (let i = 1; i <= 30; i++ ) {
          pages.push(i);
       }
 
