@@ -1,9 +1,10 @@
 
 .avatar img {
-   width: 50px;
-   height: 50px;
+   width: 100px;
+   height: 100px;
 
-   border-radius: 25px;
+   border-radius: 50px;
+   margin-left: 30px;
 }
 
 
@@ -23,5 +24,51 @@
 
 .pagination  span {
    margin: 10px;
+
+}
+
+.usersContainer {
+   font-family: 'Nunito Sans', sans-serif;
+
+      
+   text-align: center;
+
+}
+
+.placeholder {
+   width: 600px;
+   background: rgb(245, 245, 245);
+   padding: 20px;
+   margin: 40px;
+   border-radius: 30px;
+   margin-left: 150px;
+   display: flex;
+   justify-content: space-between;
+}
+
+.name{
+   font-weight: bold;
+   font-size: 20px;
+}
+
+.button button{
+   background-color: transparent;
+   border: 2px solid rgb(167, 166, 166);
+   font-family: 'Nunito Sans', sans-serif;
+   border-radius: 3px;
+   font-weight: 600;
+   font-style: italic;
+   margin-left: 30px;
+
+
+}
+
+.text {
+   margin-right: 30px;
+
+}
+
+.text div {
+   padding: 6px;
 
 }
