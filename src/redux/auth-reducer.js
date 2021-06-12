@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action) => {
       case SET_USER_PHOTO: {
          return {
             ...state,
-            ...action.photo
+            photo: action.photo
          }
       }
 
