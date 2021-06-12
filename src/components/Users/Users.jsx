@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Users.module.css';
 import userPhoto from "../../assets/img/profilePhoto.png";
 import { NavLink } from "react-router-dom";
-
+import * as axios from 'axios';
 
 function Users (props) {
       let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -38,7 +38,43 @@ function Users (props) {
 
                   </div>
                   <div className={style.button}>
-                     {u.followed ? <button onClick={() => {props.unfollow(u.id)}}>Follow</button> : <button  onClick={() => {props.follow(u.id)}}>Unfolow</button>}
+                     {u.followed ? <button onClick={() => { 
+                        
+                        
+                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                           withCredentials: true,
+                           headers: {
+                                 "API-KEY": "4e0e2285-df51-4910-837e-25942ded4b41"
+                           }
+                        })
+                        .then(response => {
+                              if (response.data.resultCode === 0) {
+                                 props.unfollow(u.id)
+                              }
+                        })
+
+
+                        
+                        
+                        }
+                     
+                     }>Follow</button> : <button  onClick={() => { 
+                        
+                          axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                           withCredentials: true,
+                           headers: {
+                              "API-KEY": "4e0e2285-df51-4910-837e-25942ded4b41"
+                           }
+                        })
+                        .then(response => {
+                              if (response.data.resultCode === 0) {
+                                 props.follow(u.id) 
+                              }
+                        }) 
+                        }
+                     
+                     
+                     }>Unfolow</button>}
                   </div>
                </span>
                <span className={style.text}> 
