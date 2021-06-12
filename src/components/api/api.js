@@ -22,7 +22,8 @@ export const getAuthInfo = () => {
 }
 
 
-export const getUsersPhoto = (id) => {
+
+export const getUsersData = (id) => {
    return instance.get(`profile/${id}`)
       .then(response => response.data)
 }

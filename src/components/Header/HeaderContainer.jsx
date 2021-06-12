@@ -3,7 +3,7 @@ import Header from './Header';
 import * as axios from 'axios';
 import { connect } from "react-redux";
 import { setUserData, setUserPhoto } from "./../../redux/auth-reducer";
-import {getAuthInfo, getUsersPhoto}  from '../api/api.js'
+import {getAuthInfo,  getUsersData}  from '../api/api.js'
 
 class HeaderContainer extends React.Component {
 
@@ -13,7 +13,7 @@ class HeaderContainer extends React.Component {
                if(response.resultCode === 0) {
                   let {id, login,email} = response.data;
                   this.props.setUserData(id, login, email);
-                    getUsersPhoto(2)
+                     getUsersData(2)
                      .then( response => {
                         debugger;
                         let photo =  response.photos.small;
