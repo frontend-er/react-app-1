@@ -6,6 +6,7 @@ import UserProfile from "./UserProfile/UserProfile";
 
 
 function Profile(props) {
+  
    return (
   <div  className = {style.content}> 
       

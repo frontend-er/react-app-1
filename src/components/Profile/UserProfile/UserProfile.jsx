@@ -4,7 +4,6 @@ import Loader from "./../../common/Loader/Loader";
 import UserInfo from "./UserInfo/UserInfo";
 
 function UserProfile(props) {
-   debugger;
    if (!props.profile) {
       return <Loader/>
    }

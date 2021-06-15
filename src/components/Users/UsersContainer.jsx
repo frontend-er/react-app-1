@@ -4,13 +4,13 @@ import { follow,unfollow,setUsers, setCurrentPage, setUsersTotalCount, toggleIsF
 import * as axios from 'axios';
 import Users from "./Users";
 import Loader from "./../common/Loader/Loader";
-import { getUsers } from "./../api/api";
+import { usersAPI } from "./../api/api";
 
 
 class UsersContainer extends React.Component {
    componentDidMount () {
       this.props.toggleIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize)
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
         .then(response => {
                this.props.toggleIsFetching(false);
                this.props.setUsers(response.items);
@@ -23,7 +23,7 @@ class UsersContainer extends React.Component {
       return (
          this.props.toggleIsFetching(true),
          this.props.setCurrentPage(pageNumber),
-         getUsers(pageNumber, this.props.pageSize)
+         usersAPI.getUsers(pageNumber, this.props.pageSize)
          .then(response => {
                this.props.toggleIsFetching(false);
                this.props.setUsers(response.items);
