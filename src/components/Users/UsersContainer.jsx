@@ -5,7 +5,7 @@ import * as axios from 'axios';
 import Users from "./Users";
 import Loader from "./../common/Loader/Loader";
 import { usersAPI } from "./../api/api";
-
+import {withAuthRedirect} from "../HOC/withAuthRedirect.jsx";
 
 class UsersContainer extends React.Component {
    componentDidMount () {
@@ -68,7 +68,7 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {
+export default withAuthRedirect(connect(mapStateToProps, {
       follow,
       unfollow,
       setUsers,
@@ -77,4 +77,4 @@ export default connect(mapStateToProps, {
       toggleIsFetching,
       toggleFollowingInProcess
    
-})(UsersContainer);
+})(UsersContainer));
