@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { follow,unfollow,setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching, toggleFollowingInProcess } from "./../../redux/users-reducer";
-import * as axios from 'axios';
 import Users from "./Users";
 import Loader from "./../common/Loader/Loader";
 import { usersAPI } from "./../api/api";
 import {withAuthRedirect} from "../HOC/withAuthRedirect.jsx";
+import {compose} from 'redux';
 
 class UsersContainer extends React.Component {
    componentDidMount () {
@@ -68,7 +68,7 @@ let mapStateToProps = (state) => {
 
 
 
-export default withAuthRedirect(connect(mapStateToProps, {
+export default compose(connect(mapStateToProps, {
       follow,
       unfollow,
       setUsers,
@@ -77,4 +77,6 @@ export default withAuthRedirect(connect(mapStateToProps, {
       toggleIsFetching,
       toggleFollowingInProcess
    
-})(UsersContainer));
+   }),
+   withAuthRedirect
+) (UsersContainer);

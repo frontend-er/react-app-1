@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./UserInfo.module.css"
-
+import Status from "./Status.jsx";
 
 function UserInfo (props) {
 
@@ -37,7 +37,7 @@ function UserInfo (props) {
       <div className={style.usersInfo} >
             <div className={style.job}>
                {workInfo(props.lookingForAJob)}
-               {props.lookingForAJobDescription}
+               <Status status={'Не твое дело'} />
             </div>
             {contactInfo(props.contacts.facebook,"fab fa-facebook-f")}
             {contactInfo(props.contacts.website,"fas fa-laptop")}
