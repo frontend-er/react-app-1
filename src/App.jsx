@@ -2,6 +2,8 @@ import React from 'react';
 import Navigation from './components/Navigation/Navigation';
 import UsersContainer from './components/Users/UsersContainer';
 import News from './components/News/News';
+import Login from './components/Login/Login';
+
 import Settings from './components/Settings/Settings';
 
 import {BrowserRouter, Route} from "react-router-dom";
@@ -25,7 +27,7 @@ function App(props) {
           <Route path="/news" component={News} />
           <Route path="/settings" component={Settings} />
           <Route path="/users" render={() => <UsersContainer/>} />
-
+          <Route path="/login" render={() => <Login/>} />        
         </div>
       </div>
     </BrowserRouter>

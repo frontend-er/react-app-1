@@ -61,23 +61,23 @@ export const setUserPhoto = (photo) => ({
 
 export const getUserData = () => (dispatch) => {
    authAPI.getAuthInfo()
-   .then(response => {
-      if (response.resultCode === 0) {
-         let {
-            id,
-            login,
-            email
-         } = response.data;
-         dispatch(setUserData(id, login, email))
-         usersAPI.getUsersData(2)
-            .then(response => {
-               debugger;
-               let photo = response.data.photos.small;
-               dispatch(setUserPhoto(photo));
-            })
-      }
+      .then(response => {
+         if (response.data.resultCode === 0) {
+            let {
+               id,
+               login,
+               email
+            } = response.data.data;
+            dispatch(setUserData(id, login, email))
+            usersAPI.getUsersData(2)
+               .then(response => {
+                  debugger;
+                  let photo = response.data.photos.small;
+                  dispatch(setUserPhoto(photo));
+               })
+         }
 
-   })
+      })
 }
 
 
