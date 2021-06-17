@@ -19,7 +19,7 @@ function UserProfile(props) {
             <div className={style.userName}>
                {props.profile.fullName}
             </div>
-               <UserInfo  contacts={props.profile.contacts} lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription}/>
+               <UserInfo  contacts={props.profile.contacts} lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription} status={props.status} updateUserProfileStatus={props.updateUserProfileStatus}/>
 
             </div>
 

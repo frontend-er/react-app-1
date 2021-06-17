@@ -69,9 +69,8 @@ export const getUserData = () => (dispatch) => {
                email
             } = response.data.data;
             dispatch(setUserData(id, login, email))
-            usersAPI.getUsersData(2)
+            usersAPI.getUsersData(id)
                .then(response => {
-                  debugger;
                   let photo = response.data.photos.small;
                   dispatch(setUserPhoto(photo));
                })

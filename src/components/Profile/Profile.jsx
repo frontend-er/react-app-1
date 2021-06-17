@@ -15,7 +15,7 @@ function Profile(props) {
       
 
 
-      <UserProfile profile={props.profile} />
+      <UserProfile profile={props.profile} status={props.status} updateUserProfileStatus={props.updateUserProfileStatus}/>
       <MyPostsContainer/>
       
     </div>
