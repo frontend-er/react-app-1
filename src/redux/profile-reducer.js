@@ -4,7 +4,6 @@ import {
 } from "./../components/api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST = 'UPDATE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_PROFILE_STATUS = 'SET_USER_PROFILE_STATUS';
 
@@ -22,7 +21,6 @@ let initialState = {
 
    ],
 
-   newPostValue: 'facebook',
 
    profile: null,
 
@@ -35,7 +33,7 @@ const profilePageReducer = (state = initialState, action) => {
       case ADD_POST: {
          let post = {
             id: '5',
-            name: state.newPostValue,
+            name: action.newPost,
             likesOnPost: 11
          }
          return {
@@ -44,12 +42,7 @@ const profilePageReducer = (state = initialState, action) => {
             newPostValue: ''
          }
       }
-      case UPDATE_POST: {
-         return {
-            ...state,
-            newPostValue: action.newValue
-         }
-      }
+
 
       case SET_USER_PROFILE: {
          return {
@@ -70,18 +63,13 @@ const profilePageReducer = (state = initialState, action) => {
 }
 
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (newPost) => {
    return {
-      type: ADD_POST
+      type: ADD_POST,
+      newPost
    }
 }
 
-export const updatePostActionCreator = (text) => {
-   return {
-      type: UPDATE_POST,
-      newValue: text
-   }
-}
 
 
 export const setUserProfile = (profile) => ({
@@ -115,7 +103,7 @@ export const getUserProfileStatus = (userId) => (dispatch) => {
 export const updateUserProfileStatus = (status) => (dispatch) => {
    profileAPI.updateStatus(status)
       .then(response => {
-         if(response.resultCode === 0) {
+         if (response.resultCode === 0) {
             debugger;
             dispatch(setUserProfileStatus(response.data));
          }
