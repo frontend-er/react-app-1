@@ -9,12 +9,20 @@ import {
   applyMiddleware
 } from 'redux'
 import thunk from 'redux-thunk';
+import {
+  reducer as formReduer
+} from 'redux-form';
+
+
+
+
 let redusers = combineReducers({
   profilePage: profilePageReducer,
   dialogsPage: dialogsPageReducer,
   sideBar: sideBarReducer,
   usersPage: usersReducer,
-  auth: authReducer
+  auth: authReducer,
+  form: formReduer
 })
 
 
