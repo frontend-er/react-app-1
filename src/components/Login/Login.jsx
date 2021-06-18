@@ -1,32 +1,39 @@
 import  React  from "react";
  import {Field ,reduxForm  } from  'redux-form';
+import {Input} from "../common/FormsControls/FormControler";
+import {maxLengthCreator, requiredField} from "../../utilites/validatirs/validators";
+import { connect } from "react-redux";
+import {login} from "../../redux/auth-reducer";
 
 
- const Login = () =>  {
+ const Login = (props) => {
 
-    const onSubmit = (formData) => {
-       console.log(formData)
-    }
-    return (
-       <div>
-         Login
-         <LoginReduxForm onSubmit={onSubmit} />
-       </div>
-        
-    )
- }
+     const onSubmit = (formData) => {
+         props.login(formData.email, formData.password, formData.rememberMe);
+     }
+         return (
+             <div>
+                 Login
+                 <LoginReduxForm onSubmit={onSubmit}/>
+             </div>
 
+         )
+     }
+
+
+let maxLength10 = maxLengthCreator(20)
 
 
   const LoginForm = (props) =>  {
+
     return (
          <form onSubmit={props.handleSubmit}>
             <div> 
-               <Field placeholder={"login"} type={"text"} name={"login"} component={"input"}/>
+               <Field placeholder={"login"} type={"text"} name={"email"} validate={[requiredField,maxLength10 ]} component={Input}/>
             </div>
-            <div><Field placeholder={"password"} name={"password"} type={"text"} component={"input"} /> </div>
+            <div><Field type={"password"} placeholder={"password"} name={"password"}  validate={[requiredField,maxLength10 ]} component={Input} /> </div>
 
-            <div><Field placeholder={"login"} name={"rememberMe"} type={"checkbox"}  component={"input"}/> remember me</div>
+            <div><Field name={"rememberMe"} type={"checkbox"}  component={"input"}/> remember me</div>
             <div> <button>Sing in</button> </div>
 
          </form>
@@ -35,4 +42,7 @@ import  React  from "react";
 
 const LoginReduxForm = reduxForm ({form: "form"})(LoginForm);
 
- export default Login
+export default connect(null, {
+    login
+})(Login);
+

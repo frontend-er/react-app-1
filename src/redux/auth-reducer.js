@@ -1,7 +1,7 @@
 import {
    authAPI,
    usersAPI
-} from "./../components/api/api";
+} from "../components/api/api";
 
 
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -43,12 +43,13 @@ const authReducer = (state = initialState, action) => {
    }
 }
 
-export const setUserData = (userID, login, email) => ({
+export const setUserData = (userID, login, email, isAuth) => ({
    type: SET_USER_DATA,
    data: {
       userID,
       login,
       email,
+      isAuth
 
    }
 })
@@ -68,7 +69,7 @@ export const getUserData = () => (dispatch) => {
                login,
                email
             } = response.data.data;
-            dispatch(setUserData(id, login, email))
+            dispatch(setUserData(id, login, email, true))
             usersAPI.getUsersData(id)
                .then(response => {
                   let photo = response.data.photos.small;
@@ -78,6 +79,28 @@ export const getUserData = () => (dispatch) => {
 
       })
 }
+
+
+export const login = (email,password, rememberMe) => (dispatch) => {
+   authAPI.login(email, password, rememberMe)
+       .then(response => {
+          if (response.data.resultCode === 0) {
+              dispatch(getUserData())
+          }
+       });
+}
+
+export const logout = () => (dispatch) => {
+   authAPI.logout()
+       .then(response => {
+          if (response.data.resultCode === 0) {
+             dispatch(setUserData(null, null, null, false))
+
+          }
+       });
+}
+
+
 
 
 
