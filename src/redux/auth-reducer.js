@@ -2,6 +2,7 @@ import {
    authAPI,
    usersAPI
 } from "../components/api/api";
+import {stopSubmit} from "redux-form";
 
 
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -9,7 +10,7 @@ const SET_USER_PHOTO = 'SET_USER_PHOTO';
 
 let initialState = {
 
-   id: null,
+   userID: null,
    login: null,
    email: null,
    isAuth: false,
@@ -61,7 +62,7 @@ export const setUserPhoto = (photo) => ({
 })
 
 export const getUserData = () => (dispatch) => {
-   authAPI.getAuthInfo()
+   return  authAPI.getAuthInfo()
       .then(response => {
          if (response.data.resultCode === 0) {
             let {
@@ -86,6 +87,9 @@ export const login = (email,password, rememberMe) => (dispatch) => {
        .then(response => {
           if (response.data.resultCode === 0) {
               dispatch(getUserData())
+          } else {
+              let messages = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+              dispatch(stopSubmit("login", {_error: messages}));
           }
        });
 }
