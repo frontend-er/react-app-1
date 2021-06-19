@@ -12,6 +12,9 @@ class ProfileContainer extends React.Component {
       if(!userId) {
          debugger;
          userId = this.props.userId;
+         if(!userId) {
+            this.props.history.push('/login');
+         }
       }
       this.props.getUserProfile(userId);
       this.props.getUserProfileStatus(userId);
