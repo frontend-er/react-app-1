@@ -10,6 +10,10 @@
 
 .selected {
    font-weight: bold;
+   background-color: aqua;
+   border-radius: 50%;
+   width: 3px;
+   height: 3px;
 }
 
 .pagination{
