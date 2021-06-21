@@ -31,7 +31,7 @@ let maxLength10 = maxLengthCreator(10);
 const AddPostReduxForm = reduxForm ({form: "postForm"})(PostForm);
 
 
- function  MyPosts(props) {
+ const MyPosts = props => {
     let postItem = props.posts.map( p =>  <Post name={p.name} likes={p.likesOnPost}/> );
 
     let addPost = (newPost) => {
@@ -42,14 +42,14 @@ const AddPostReduxForm = reduxForm ({form: "postForm"})(PostForm);
        addPost(value.post)
     }
 
-   
-      
-    return( 
+
+
+    return(
      <div className={style.container}>
      <AddPostReduxForm  onSubmit={addNewPost} />
       {postItem}
       </div>
     )
- }
+ };
 
  export default MyPosts;
