@@ -10,7 +10,7 @@ function Users (props) {
    
       let pages = [];
 
-      for (let i = 1; i <= 23; i++ ) {
+      for (let i = 1; i <= 2000; i++ ) {
          pages.push(i);
       }
       

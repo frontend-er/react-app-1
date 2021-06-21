@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./UserInfo.module.css"
 import Status from "./Status.jsx";
+import StatusWithHooks from "./StatusWithHooks";
 
 function UserInfo (props) {
 
@@ -16,7 +17,7 @@ function UserInfo (props) {
       )
       return (
          <div>
-            <i class={icon}></i>
+            <i className={icon}/>
             <a href=''>{info}</a>
          </div>
       
@@ -37,7 +38,7 @@ function UserInfo (props) {
       <div className={style.usersInfo} >
             <div className={style.job}>
                {workInfo(props.lookingForAJob)}
-               <Status status={props.status} updateUserProfileStatus={props.updateUserProfileStatus}/>
+               <StatusWithHooks status={props.status} updateUserProfileStatus={props.updateUserProfileStatus}/>
             </div>
             {contactInfo(props.contacts.facebook,"fab fa-facebook-f")}
             {contactInfo(props.contacts.website,"fas fa-laptop")}
