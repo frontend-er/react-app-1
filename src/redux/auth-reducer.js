@@ -5,8 +5,8 @@ import {
 import {stopSubmit} from "redux-form";
 
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_USER_PHOTO = 'SET_USER_PHOTO';
+const SET_USER_DATA = 'network/auth/SET_USER_DATA';
+const SET_USER_PHOTO = 'network/auth/SET_USER_PHOTO';
 
 let initialState = {
 
@@ -61,9 +61,9 @@ export const setUserPhoto = (photo) => ({
    photo
 })
 
-export const getUserData = () => (dispatch) => {
-   return  authAPI.getAuthInfo()
-      .then(response => {
+export const getUserData = () => async (dispatch) => {
+
+    let response = await authAPI.getAuthInfo();
          if (response.data.resultCode === 0) {
             let {
                id,
@@ -71,37 +71,29 @@ export const getUserData = () => (dispatch) => {
                email
             } = response.data.data;
             dispatch(setUserData(id, login, email, true))
-            usersAPI.getUsersData(id)
-               .then(response => {
-                  let photo = response.data.photos.small;
-                  dispatch(setUserPhoto(photo));
-               })
-         }
 
-      })
+         }
 }
 
 
-export const login = (email,password, rememberMe) => (dispatch) => {
-   authAPI.login(email, password, rememberMe)
-       .then(response => {
+export const login = (email,password, rememberMe) => async (dispatch) => {
+   let response = await authAPI.login(email, password, rememberMe);
+
           if (response.data.resultCode === 0) {
               dispatch(getUserData())
           } else {
               let messages = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
               dispatch(stopSubmit("login", {_error: messages}));
           }
-       });
+
 }
 
-export const logout = () => (dispatch) => {
-   authAPI.logout()
-       .then(response => {
+export const logout = () => async (dispatch) => {
+  let response = await authAPI.logout();
           if (response.data.resultCode === 0) {
              dispatch(setUserData(null, null, null, false))
 
           }
-       });
 }
 
 
