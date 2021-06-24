@@ -31,18 +31,18 @@ import style from "./../common/FormsControls/FormControler.module.css"
 let maxLength10 = maxLengthCreator(20)
 
 
-  const LoginForm = (props) =>  {
+  const LoginForm = ({handleSubmit,error }) =>  {
     debugger
     return (
-         <form onSubmit={props.handleSubmit}>
+         <form onSubmit={handleSubmit}>
             <div> 
                <Field placeholder={"login"} type={"text"} name={"email"} validate={[requiredField,maxLength10 ]} component={Input}/>
             </div>
             <div><Field type={"password"} placeholder={"password"} name={"password"}  validate={[requiredField,maxLength10 ]} component={Input} /> </div>
 
             <div><Field name={"rememberMe"} type={"checkbox"}  component={"input"}/> remember me</div>
-             { props.error && <div className={style.formSummaryError}>
-                 {props.error}
+             { error && <div className={style.formSummaryError}>
+                 {error}
              </div>}
             <div> <button>Sing in</button> </div>
 
